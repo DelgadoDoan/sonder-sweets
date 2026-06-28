@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { auth } from "@/src/lib/auth"
 import { headers } from "next/headers"
-import { LoginBtn, LogoutBtn, SignupBtn } from "./nav-buttons";
+import { LoginBtn, LogoutBtn, SignupBtn, GoogleBtn } from "./nav-buttons";
 import NavAuth from "./nav-auth";
 
 export default async function NavBar() {
@@ -26,6 +26,7 @@ export default async function NavBar() {
                 <div>
                     <LoginBtn />
                     <SignupBtn />
+                    <GoogleBtn />
                 </div>
             )}
         </ul>

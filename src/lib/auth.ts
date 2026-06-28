@@ -20,7 +20,14 @@ export const auth = betterAuth({
     plugins: [nextCookies()],
     user: {
         additionalFields: {
-            phone: {type: 'string', required: true, fieldName: 'phone'},
+            phone: {type: 'string', required: false, fieldName: 'phone'},
         },
+    },
+    baseURL: process.env.BETTER_AUTH_URL, 
+    socialProviders: {
+        google: { 
+            clientId: process.env.GOOGLE_CLIENT_ID as string, 
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string, 
+        }, 
     },
 });
