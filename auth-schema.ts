@@ -1,12 +1,12 @@
-import { integer, numeric, pgTable, serial, boolean, index, text, timestamp } from 'drizzle-orm/pg-core';
 import { relations } from "drizzle-orm";
+import { pgTable, text, timestamp, boolean, index } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
   emailVerified: boolean("email_verified").default(false).notNull(),
-  phone: text('phone').notNull().unique(),
+  image: text("image"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()
@@ -91,22 +91,3 @@ export const accountRelations = relations(account, ({ one }) => ({
     references: [user.id],
   }),
 }));
-
-export const products = pgTable('products', {
-    id: serial('id').primaryKey(),
-    productName: text('product_name').notNull(),
-    description: text('description').notNull(),
-    price: numeric('price', { precision: 10, scale: 2 }).notNull(),
-    stock: integer('stock').default(0).notNull(),
-    imageUrl: text('image_url').notNull(),
-    createdAt: timestamp('created_at', { withTimezone: true, mode: 'date' })
-        .notNull()
-        .defaultNow(),
-    updatedAt: timestamp('updated_at', { withTimezone: true, mode: 'date' })
-        .notNull()
-        .$onUpdate(() => new Date())
-        .defaultNow(),
-});
-
-export type InsertProduct = typeof products.$inferInsert;
-export type Selectroduct = typeof products.$inferSelect;
