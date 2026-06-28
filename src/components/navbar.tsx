@@ -8,7 +8,7 @@ export default function NavBar() {
             </div>
             <ul>
 
-                <Link href="/home">Home</Link>
+                <Link href="/">Home</Link>
                 <Link href="/products">Products</Link>
                 <Link href="/auth/login">Log In</Link>
             </ul>
