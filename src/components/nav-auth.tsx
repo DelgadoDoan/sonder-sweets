@@ -128,57 +128,61 @@ function SignUpForm({
       </h2>
 
       <form action={signUpAction} className="flex flex-col gap-4">
-        <div>
-          <label
-            htmlFor="signup-name"
-            className="mb-1 block text-sm font-medium text-gray-700"
-          >
-            Full Name
-          </label>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+  <div>
+    <label
+      htmlFor="signup-name"
+      className="mb-1 block text-sm font-medium text-gray-700"
+    >
+      Full Name
+    </label>
 
-          <input
-            id="signup-name"
-            name="name"
-            type="text"
-            placeholder="Juan Dela Cruz"
-            className={`w-full rounded-lg border px-4 py-3 text-sm placeholder-gray-400 focus:outline-none ${
-              state?.errors?.name
-                ? "border-red-500 focus:border-red-500"
-                : "border-gray-300 focus:border-gray-500"
-            }`}
-          />
-          {state?.errors?.name?.[0] && (
-            <p className="mt-1 text-sm text-red-500">
-              {state.errors.name[0]}
-            </p>
-          )}
-        </div>
+    <input
+      id="signup-name"
+      name="name"
+      type="text"
+      placeholder="Juan Dela Cruz"
+      className={`w-full rounded-lg border px-4 py-3 text-sm placeholder-gray-400 focus:outline-none ${
+        state?.errors?.name
+          ? "border-red-500 focus:border-red-500"
+          : "border-gray-300 focus:border-gray-500"
+      }`}
+    />
 
-        <div>
-          <label
-            htmlFor="signup-phone"
-            className="mb-1 block text-sm font-medium text-gray-700"
-          >
-            Mobile Number
-          </label>
+    {state?.errors?.name?.[0] && (
+      <p className="mt-1 text-sm text-red-500">
+        {state.errors.name[0]}
+      </p>
+    )}
+  </div>
 
-          <input
-            id="signup-phone"
-            name="phone"
-            type="tel"
-            placeholder="+63XXXXXXXXXX"
-            className={`w-full rounded-lg border px-4 py-3 text-sm placeholder-gray-400 focus:outline-none ${
-              state?.errors?.phone
-                ? "border-red-500 focus:border-red-500"
-                : "border-gray-300 focus:border-gray-500"
-            }`}
-          />
-          {state?.errors?.phone?.[0] && (
-            <p className="mt-1 text-sm text-red-500">
-              {state.errors.phone[0]}
-            </p>
-          )}
-        </div>
+  <div>
+    <label
+      htmlFor="signup-phone"
+      className="mb-1 block text-sm font-medium text-gray-700"
+    >
+      Mobile Number
+    </label>
+
+    <input
+      id="signup-phone"
+      name="phone"
+      type="tel"
+      placeholder="+63XXXXXXXXXX"
+      className={`w-full rounded-lg border px-4 py-3 text-sm placeholder-gray-400 focus:outline-none ${
+        state?.errors?.phone
+          ? "border-red-500 focus:border-red-500"
+          : "border-gray-300 focus:border-gray-500"
+      }`}
+    />
+
+    {state?.errors?.phone?.[0] && (
+      <p className="mt-1 text-sm text-red-500">
+        {state.errors.phone[0]}
+      </p>
+    )}
+  </div>
+</div>
 
         <div>
             <label
