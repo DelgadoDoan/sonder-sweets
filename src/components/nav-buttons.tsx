@@ -5,19 +5,19 @@ import { signOut } from "../actions/auth";
 import { authClient } from "../lib/auth-client";
 import Button from "./ui/button";
 
-export function LoginBtn() {
+export function SignInBtn() {
   const router = useRouter();
   return (
     <Button 
       className="w-auto border-none py-0 font-normal hover:bg-transparent" 
-      onClick={() => router.push("?auth=login", { scroll: false })}
+      onClick={() => router.push("?auth=signin", { scroll: false })}
     >
-      Log In
+      Sign In
     </Button>
   );
 }
 
-export function SignupBtn() {
+export function SignUpBtn() {
   const router = useRouter();
   return (
     <Button 
@@ -29,7 +29,7 @@ export function SignupBtn() {
   );
 }
 
-export function LogoutBtn() {
+export function LogOutBtn() {
   return (
     <Button 
       className="w-auto border-none py-0 font-normal hover:bg-transparent" 
@@ -41,7 +41,7 @@ export function LogoutBtn() {
 }
 
 export function GoogleBtn() {
-  const handleGoogleLogin = async () => {
+  const handleGoogleSignIn = async () => {
     try {
       const data = await authClient.signIn.social({
         callbackURL: "/",
@@ -54,7 +54,7 @@ export function GoogleBtn() {
   };
 
   return (
-    <Button onClick={handleGoogleLogin}>
+    <Button onClick={handleGoogleSignIn}>
       <GoogleIcon />
       Sign in with Google
     </Button>

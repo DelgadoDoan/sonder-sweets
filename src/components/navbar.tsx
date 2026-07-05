@@ -5,7 +5,7 @@ import Image from "next/image";
 import { User, Heart, ShoppingBasket } from "lucide-react";
 import { auth } from "@/src/lib/auth"
 import { headers } from "next/headers"
-import { LoginBtn, LogoutBtn } from "./nav-buttons";
+import { SignInBtn, LogOutBtn } from "./nav-buttons";
 import NavAuth from "./nav-auth";
 
 export default async function NavBar() {
@@ -42,14 +42,14 @@ export default async function NavBar() {
                             </Link>
                         </li>
                         <li>
-                            <LogoutBtn />
+                            <LogOutBtn />
                         </li>
                     </>
                 ) : (
                     // Unauthenticated: sign in only
                     <li className="flex items-center gap-2 text-sm">
                         <User className="h-5 w-5" />
-                        <LoginBtn />
+                        <SignInBtn />
                     </li>
                 )}
             </ul>
