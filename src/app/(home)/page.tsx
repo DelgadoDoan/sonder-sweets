@@ -10,7 +10,7 @@ export default async function HomePage() {
         <>
             <div className="max-w-6xl mx-auto px-6 mt-24 mb-24">
                 <div className="mb-10 flex flex-col items-center text-center">
-                    <h1 className="text-xl md:text-4xl font-bold tracking-tight text-[#4b3123]">
+                    <h1 className="text-xl md:text-4xl font-serif tracking-tight text-[#4b3123]">
                         Our Top Picks
                     </h1>
                     <div className="mt-5 h-px w-full max-w-md bg-neutral-200" />
@@ -19,11 +19,13 @@ export default async function HomePage() {
                     {allProducts.map((product) => (
                         <ProductCard
                             key={product.id}
+                            productId={product.id}
                             productName={product.productName}
                             description={product.description}
                             price={Number(product.price)}
                             stock={product.stock}
                             imageUrl={product.imageUrl}
+                            initialQuantity={67}
                         />
                     ))}
                 </div>

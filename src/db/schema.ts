@@ -1,4 +1,4 @@
-import { integer, numeric, pgTable, serial, boolean, index, text, timestamp } from 'drizzle-orm/pg-core';
+import { integer, numeric, pgTable, serial, boolean, index, text, timestamp, unique } from 'drizzle-orm/pg-core';
 import { relations } from "drizzle-orm";
 
 export const user = pgTable("user", {
@@ -109,5 +109,36 @@ export const products = pgTable('products', {
         .defaultNow(),
 });
 
-export type InsertProduct = typeof products.$inferInsert;
-export type Selectroduct = typeof products.$inferSelect;
+{/* Might add later if app scales*/}
+// export const baskets = pgTable('baskets', {
+//     id: serial('id').primaryKey(),
+//     userId: text("user_id").notNull().unique().references(() => user.id, { onDelete: "cascade" }),
+//     createdAt: timestamp('created_at', { withTimezone: true, mode: 'date' })
+//         .notNull()
+//         .defaultNow(),
+//     updatedAt: timestamp('updated_at', { withTimezone: true, mode: 'date' })
+//         .notNull()
+//         .$onUpdate(() => new Date())
+//         .defaultNow(),
+// });
+
+export const basketItems = pgTable('basket_items',
+  {
+    id: serial('id').primaryKey(),
+    userId: text("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
+    productId: integer("product_id").notNull().references(() => products.id, { onDelete: "cascade" }),
+    quantity: integer("quantity").default(1).notNull(),
+    createdAt: timestamp('created_at', { withTimezone: true, mode: 'date' })
+        .notNull()
+        .defaultNow(),
+    updatedAt: timestamp('updated_at', { withTimezone: true, mode: 'date' })
+        .notNull()
+        .$onUpdate(() => new Date())
+        .defaultNow(),
+  },
+  (table) => ({
+    userProductUnique: unique().on(table.userId, table.productId),
+  })
+);
+
+export type NewBasketItem = typeof basketItems.$inferInsert

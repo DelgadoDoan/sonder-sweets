@@ -6,7 +6,7 @@ export default function HeroSection() {
     <section className="bg-gradient-to-r from-[#c3dcda] via-[#e4f1f0] to-white">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-2 py-12 md:flex-row md:px-4">
         <div className="max-w-sm text-center md:text-left">
-          <h1 className="font-serif text-4xl font-bold leading-tight text-[#3d2b1f] md:text-5xl">
+          <h1 className="font-serif text-4xl leading-tight text-[#3d2b1f] md:text-5xl">
             Experience
             <br />
             <span className="text-[#e8836a]">Home-baked</span>
